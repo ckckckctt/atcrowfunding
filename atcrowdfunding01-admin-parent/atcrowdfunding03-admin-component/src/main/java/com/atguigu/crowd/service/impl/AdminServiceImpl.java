@@ -2,13 +2,16 @@ package com.atguigu.crowd.service.impl;
 
 import com.aiguigu.crowd.entity.Admin;
 import com.aiguigu.crowd.entity.AdminExample;
+import com.atguigu.crowd.constant.CrowdConstant;
 import com.atguigu.crowd.mapper.AdminMapper;
 import com.atguigu.crowd.service.api.AdminService;
+import com.atguigu.crowd.util.CrowdUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AdminServiceImpl implements AdminService {
 
@@ -24,8 +27,35 @@ public class AdminServiceImpl implements AdminService {
         return null;
     }
 
-    public Admin getAdminByLoginAcct(String loginAcct, String userPswd) {
-        return null;
+    public Admin getAdminByloginAcct(String loginAcct, String userPswd) {
+        AdminExample adminExample = new AdminExample();
+        //创建Criteria对象
+        AdminExample.Criteria criteria = adminExample.createCriteria();
+        //在criteria对象中封装查询条件
+        criteria.andLoginAcctEqualTo(loginAcct);
+        List<Admin> admins = adminMapper.selectByExample(adminExample);
+
+        if (admins == null || admins.size() == 0){
+            throw new RuntimeException(CrowdConstant.MESSAGE_LOGIN_FAILED);
+        }
+        if (admins.size() >1){
+            throw new RuntimeException(CrowdConstant.ESSAGE_SYSTEM_ERROR_LOGIN_NOT_UNIQUE);
+        }
+
+        Admin admin = admins.get(0);
+        if (admin == null){
+            throw new RuntimeException(CrowdConstant.MESSAGE_LOGIN_FAILED);
+        }
+
+        String adminUserPswd = admin.getUserPswd();
+        //将用户密码加密
+        String userPaswdDB = CrowdUtil.md5(adminUserPswd);
+        //比较密码
+        if (!Objects.equals(userPaswdDB,adminUserPswd)){
+            throw new RuntimeException(CrowdConstant.MESSAGE_LOGIN_FAILED);
+        }
+        //8.如果一致则返回Admin对象
+        return admin;
     }
 
     public PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize) {

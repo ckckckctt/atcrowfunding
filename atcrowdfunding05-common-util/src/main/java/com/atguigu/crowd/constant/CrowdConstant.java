@@ -11,4 +11,5 @@ public class CrowdConstant {
     public static final String ATTR_NAME_LOGIN_ADMIN = "loginAdmin";
     public static final String ATTR_NAME_PAGE_INFO = "pageInfo";
 
+    public static final String ESSAGE_SYSTEM_ERROR_LOGIN_NOT_UNIQUE = "用户名不唯一";
 }

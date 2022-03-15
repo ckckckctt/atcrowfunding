@@ -1,10 +1,39 @@
 package com.atguigu.crowd.mvc.config;
 
+import com.atguigu.crowd.constant.CrowdConstant;
+import com.atguigu.crowd.exception.AccessForbiddenException;
+import com.atguigu.crowd.exception.LoginFailedException;
+import com.atguigu.crowd.util.CrowdUtil;
+import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @ControllerAdvice
 public class CrowdExceptionResolver {
-/*
+
+
+    @ExceptionHandler(value = LoginFailedException.class)
+    public ModelAndView resolveLoginFailedException(NullPointerException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String viewName = "admin-login";
+        return commonResolve(viewName,exception,request,response);
+    }
+
+
+    // 未登录异常
+    @ExceptionHandler(value = AccessForbiddenException.class)
+    public ModelAndView resolveAccessForbiddenException(AccessForbiddenException exception,
+                                                        HttpServletRequest request,
+                                                        HttpServletResponse response) throws IOException {
+        String viewName = "admin-login";
+        return commonResolve(viewName,exception,request,response);
+    }
+
     // 空指针异常
     @ExceptionHandler(value = NullPointerException.class)
     public ModelAndView resolveNullPointerException(NullPointerException exception, HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -37,5 +66,5 @@ public class CrowdExceptionResolver {
         // 10. 设置对应的视图名称
         modelAndView.setViewName(viewName);
         return modelAndView;
-    }*/
+    }
 }
