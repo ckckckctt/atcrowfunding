@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <%@include file="include-head.jsp" %>
+<link rel="stylesheet" href="css/pagination.css" />
+<script type="text/javascript" src="jquery/jquery.pagination.js"/>
+
 
 <body>
 <%@include file="include-nav.jsp" %>

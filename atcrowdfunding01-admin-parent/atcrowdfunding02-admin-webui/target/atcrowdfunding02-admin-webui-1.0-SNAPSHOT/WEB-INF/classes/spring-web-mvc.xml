@@ -7,7 +7,7 @@
 
 
 <!--自动扫描-->
-<context:component-scan base-package="com.atguigu.crowd.mvc"/>
+<context:component-scan base-package="com.org.crowd.mvc"/>
 
 <!--配置springmvc注解驱动-->
 <mvc:annotation-driven/>
@@ -34,7 +34,7 @@
         <mvc:exclude-mapping path="/admin/to/logout.do"/>
         <mvc:exclude-mapping path="/admin/do/logout.do"/>
         <!--配置拦截器类-->
-        <bean class="com.atguigu.crowd.mvc.interceptor.LoginInterceptor"/>
+        <bean class="com.org.crowd.mvc.interceptor.LoginInterceptor"/>
     </mvc:interceptor>
 </mvc:interceptors>
 
@@ -45,7 +45,7 @@
         <props>
             <!-- key属性指定异常全类名，标签体中指定对应的视图(前后缀拼接) -->
             <prop key="java.lang.Exception">system-error</prop>
-            <prop key="com.atguigu.crowd.exception.AccessForbiddenException">admin-login</prop>
+            <prop key="com.org.crowd.exception.AccessForbiddenException">admin-login</prop>
         </props>
     </property>
 </bean>

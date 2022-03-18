@@ -1,9 +1,8 @@
 import com.aiguigu.crowd.entity.Admin;
-import com.atguigu.crowd.mapper.AdminMapper;
+import com.org.crowd.mapper.AdminMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -12,7 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring-persist-mybatis.xml")
+@ContextConfiguration("classpath:daiyong/spring-persist-mybatis.xml")
 public class CrowdTest {
 
     @Autowired

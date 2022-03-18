@@ -22,9 +22,10 @@
             height : auto;
         }
     </style>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="script/docs.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script/docs.min.js"></script>
+    <script type="text/javascript" src="layer/layer.js"></script>
     <script type="text/javascript">
         $(function () {
             $(".list-group-item").click(function(){
