@@ -16,7 +16,7 @@
 
     <!--配置SqlSessionFactoryBean（设置mybatis配置文件的路径、mapper.xml文件的路径、注入数据源）-->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
-        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
         <property name="dataSource" ref="dataSource"/>
         <!--配置插件-->
@@ -39,6 +39,6 @@
 
     <!--配置与mapper.xml对应的mapper接口的包路径-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="org.fall.mapper"/>
+        <property name="basePackage" value="com.org.crowd.mapper"/>
     </bean>
 </beans>

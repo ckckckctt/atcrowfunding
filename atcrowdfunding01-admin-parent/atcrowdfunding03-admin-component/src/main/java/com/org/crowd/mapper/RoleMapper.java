@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface RoleMapper {
+
+    List<Role> selectRoleByKeyword(String keyword);
+
     int countByExample(RoleExample example);
 
     int deleteByExample(RoleExample example);
